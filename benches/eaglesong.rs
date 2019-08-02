@@ -1,5 +1,5 @@
 use blake2b_rs::blake2b;
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use criterion::{criterion_group, criterion_main, Criterion};
 
 pub const S: [u8; 4096] = [1u8; 4096];
 
