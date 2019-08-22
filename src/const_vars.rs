@@ -12,6 +12,7 @@ pub const COEFFICIENTS: [u32; 48] = [
     0, 2, 4, 0, 13, 22, 0, 4, 19, 0, 3, 14, 0, 27, 31, 0, 3, 8, 0, 17, 26, 0, 3, 12, 0, 18, 22, 0,
     12, 18, 0, 4, 7, 0, 4, 31, 0, 12, 27, 0, 7, 17, 0, 7, 8, 0, 1, 13,
 ];
+#[allow(clippy::unreadable_literal)]
 pub const INJECTION_CONSTANTS: [u32; 688] = [
     0x6e9e40ae, 0x71927c02, 0x9a13d3b1, 0xdaec32ad, 0x3d8951cf, 0xe1c9fe9a, 0xb806b54c, 0xacbbf417,
     0xd3622b3b, 0xa082762a, 0x9edcf1c0, 0xa9bada77, 0x7f91e46c, 0xcb0f6e4f, 0x265d9241, 0xb7bdeab0,
@@ -103,4 +104,4 @@ pub const INJECTION_CONSTANTS: [u32; 688] = [
 
 pub const NUM_ROUNDS: usize = 43;
 pub const RATE: usize = 256;
-pub const DELIMITER: u8 = 0x06;
+pub const DELIMITER: u32 = 0x06;

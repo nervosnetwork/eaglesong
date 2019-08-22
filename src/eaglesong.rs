@@ -1,5 +1,7 @@
 use crate::const_vars::*;
 
+#[allow(clippy::identity_op)]
+#[allow(clippy::erasing_op)]
 fn eaglesong_permutation(state: &mut [u32]) {
     let mut new = [0 as u32; 16];
 
@@ -20,162 +22,162 @@ fn eaglesong_permutation(state: &mut [u32]) {
         //     print(r'''new[%d] = 0;''' % j)
         //     for k in range(0,16):
         //         if BIT_MATRIX[k * 16 + j] == 1:
-        //             print(r'''new[%d] = new[%d] ^ state[%d];''' % (j,j,k))
+        //             print(r'''new[%d] ^= state[%d];''' % (j,k))
         // for j in range(0,16):
         //     print(r'''state[%d] = new[%d];''' % (j, j))
 
         new[0] = 0;
-        new[0] = new[0] ^ state[0];
-        new[0] = new[0] ^ state[4];
-        new[0] = new[0] ^ state[5];
-        new[0] = new[0] ^ state[6];
-        new[0] = new[0] ^ state[7];
-        new[0] = new[0] ^ state[12];
-        new[0] = new[0] ^ state[15];
+        new[0] ^= state[0];
+        new[0] ^= state[4];
+        new[0] ^= state[5];
+        new[0] ^= state[6];
+        new[0] ^= state[7];
+        new[0] ^= state[12];
+        new[0] ^= state[15];
         new[1] = 0;
-        new[1] = new[1] ^ state[0];
-        new[1] = new[1] ^ state[1];
-        new[1] = new[1] ^ state[4];
-        new[1] = new[1] ^ state[8];
-        new[1] = new[1] ^ state[12];
-        new[1] = new[1] ^ state[13];
-        new[1] = new[1] ^ state[15];
+        new[1] ^= state[0];
+        new[1] ^= state[1];
+        new[1] ^= state[4];
+        new[1] ^= state[8];
+        new[1] ^= state[12];
+        new[1] ^= state[13];
+        new[1] ^= state[15];
         new[2] = 0;
-        new[2] = new[2] ^ state[0];
-        new[2] = new[2] ^ state[1];
-        new[2] = new[2] ^ state[2];
-        new[2] = new[2] ^ state[4];
-        new[2] = new[2] ^ state[6];
-        new[2] = new[2] ^ state[7];
-        new[2] = new[2] ^ state[9];
-        new[2] = new[2] ^ state[12];
-        new[2] = new[2] ^ state[13];
-        new[2] = new[2] ^ state[14];
-        new[2] = new[2] ^ state[15];
+        new[2] ^= state[0];
+        new[2] ^= state[1];
+        new[2] ^= state[2];
+        new[2] ^= state[4];
+        new[2] ^= state[6];
+        new[2] ^= state[7];
+        new[2] ^= state[9];
+        new[2] ^= state[12];
+        new[2] ^= state[13];
+        new[2] ^= state[14];
+        new[2] ^= state[15];
         new[3] = 0;
-        new[3] = new[3] ^ state[0];
-        new[3] = new[3] ^ state[1];
-        new[3] = new[3] ^ state[2];
-        new[3] = new[3] ^ state[3];
-        new[3] = new[3] ^ state[4];
-        new[3] = new[3] ^ state[6];
-        new[3] = new[3] ^ state[8];
-        new[3] = new[3] ^ state[10];
-        new[3] = new[3] ^ state[12];
-        new[3] = new[3] ^ state[13];
-        new[3] = new[3] ^ state[14];
+        new[3] ^= state[0];
+        new[3] ^= state[1];
+        new[3] ^= state[2];
+        new[3] ^= state[3];
+        new[3] ^= state[4];
+        new[3] ^= state[6];
+        new[3] ^= state[8];
+        new[3] ^= state[10];
+        new[3] ^= state[12];
+        new[3] ^= state[13];
+        new[3] ^= state[14];
         new[4] = 0;
-        new[4] = new[4] ^ state[1];
-        new[4] = new[4] ^ state[2];
-        new[4] = new[4] ^ state[3];
-        new[4] = new[4] ^ state[4];
-        new[4] = new[4] ^ state[5];
-        new[4] = new[4] ^ state[7];
-        new[4] = new[4] ^ state[9];
-        new[4] = new[4] ^ state[11];
-        new[4] = new[4] ^ state[13];
-        new[4] = new[4] ^ state[14];
-        new[4] = new[4] ^ state[15];
+        new[4] ^= state[1];
+        new[4] ^= state[2];
+        new[4] ^= state[3];
+        new[4] ^= state[4];
+        new[4] ^= state[5];
+        new[4] ^= state[7];
+        new[4] ^= state[9];
+        new[4] ^= state[11];
+        new[4] ^= state[13];
+        new[4] ^= state[14];
+        new[4] ^= state[15];
         new[5] = 0;
-        new[5] = new[5] ^ state[0];
-        new[5] = new[5] ^ state[2];
-        new[5] = new[5] ^ state[3];
-        new[5] = new[5] ^ state[7];
-        new[5] = new[5] ^ state[8];
-        new[5] = new[5] ^ state[10];
-        new[5] = new[5] ^ state[14];
+        new[5] ^= state[0];
+        new[5] ^= state[2];
+        new[5] ^= state[3];
+        new[5] ^= state[7];
+        new[5] ^= state[8];
+        new[5] ^= state[10];
+        new[5] ^= state[14];
         new[6] = 0;
-        new[6] = new[6] ^ state[1];
-        new[6] = new[6] ^ state[3];
-        new[6] = new[6] ^ state[4];
-        new[6] = new[6] ^ state[8];
-        new[6] = new[6] ^ state[9];
-        new[6] = new[6] ^ state[11];
-        new[6] = new[6] ^ state[15];
+        new[6] ^= state[1];
+        new[6] ^= state[3];
+        new[6] ^= state[4];
+        new[6] ^= state[8];
+        new[6] ^= state[9];
+        new[6] ^= state[11];
+        new[6] ^= state[15];
         new[7] = 0;
-        new[7] = new[7] ^ state[0];
-        new[7] = new[7] ^ state[2];
-        new[7] = new[7] ^ state[6];
-        new[7] = new[7] ^ state[7];
-        new[7] = new[7] ^ state[9];
-        new[7] = new[7] ^ state[10];
-        new[7] = new[7] ^ state[15];
+        new[7] ^= state[0];
+        new[7] ^= state[2];
+        new[7] ^= state[6];
+        new[7] ^= state[7];
+        new[7] ^= state[9];
+        new[7] ^= state[10];
+        new[7] ^= state[15];
         new[8] = 0;
-        new[8] = new[8] ^ state[0];
-        new[8] = new[8] ^ state[1];
-        new[8] = new[8] ^ state[3];
-        new[8] = new[8] ^ state[4];
-        new[8] = new[8] ^ state[5];
-        new[8] = new[8] ^ state[6];
-        new[8] = new[8] ^ state[8];
-        new[8] = new[8] ^ state[10];
-        new[8] = new[8] ^ state[11];
-        new[8] = new[8] ^ state[12];
-        new[8] = new[8] ^ state[15];
+        new[8] ^= state[0];
+        new[8] ^= state[1];
+        new[8] ^= state[3];
+        new[8] ^= state[4];
+        new[8] ^= state[5];
+        new[8] ^= state[6];
+        new[8] ^= state[8];
+        new[8] ^= state[10];
+        new[8] ^= state[11];
+        new[8] ^= state[12];
+        new[8] ^= state[15];
         new[9] = 0;
-        new[9] = new[9] ^ state[0];
-        new[9] = new[9] ^ state[1];
-        new[9] = new[9] ^ state[2];
-        new[9] = new[9] ^ state[9];
-        new[9] = new[9] ^ state[11];
-        new[9] = new[9] ^ state[13];
-        new[9] = new[9] ^ state[15];
+        new[9] ^= state[0];
+        new[9] ^= state[1];
+        new[9] ^= state[2];
+        new[9] ^= state[9];
+        new[9] ^= state[11];
+        new[9] ^= state[13];
+        new[9] ^= state[15];
         new[10] = 0;
-        new[10] = new[10] ^ state[0];
-        new[10] = new[10] ^ state[1];
-        new[10] = new[10] ^ state[2];
-        new[10] = new[10] ^ state[3];
-        new[10] = new[10] ^ state[4];
-        new[10] = new[10] ^ state[5];
-        new[10] = new[10] ^ state[6];
-        new[10] = new[10] ^ state[7];
-        new[10] = new[10] ^ state[10];
-        new[10] = new[10] ^ state[14];
-        new[10] = new[10] ^ state[15];
+        new[10] ^= state[0];
+        new[10] ^= state[1];
+        new[10] ^= state[2];
+        new[10] ^= state[3];
+        new[10] ^= state[4];
+        new[10] ^= state[5];
+        new[10] ^= state[6];
+        new[10] ^= state[7];
+        new[10] ^= state[10];
+        new[10] ^= state[14];
+        new[10] ^= state[15];
         new[11] = 0;
-        new[11] = new[11] ^ state[0];
-        new[11] = new[11] ^ state[1];
-        new[11] = new[11] ^ state[2];
-        new[11] = new[11] ^ state[3];
-        new[11] = new[11] ^ state[8];
-        new[11] = new[11] ^ state[11];
-        new[11] = new[11] ^ state[12];
+        new[11] ^= state[0];
+        new[11] ^= state[1];
+        new[11] ^= state[2];
+        new[11] ^= state[3];
+        new[11] ^= state[8];
+        new[11] ^= state[11];
+        new[11] ^= state[12];
         new[12] = 0;
-        new[12] = new[12] ^ state[1];
-        new[12] = new[12] ^ state[2];
-        new[12] = new[12] ^ state[3];
-        new[12] = new[12] ^ state[4];
-        new[12] = new[12] ^ state[9];
-        new[12] = new[12] ^ state[12];
-        new[12] = new[12] ^ state[13];
+        new[12] ^= state[1];
+        new[12] ^= state[2];
+        new[12] ^= state[3];
+        new[12] ^= state[4];
+        new[12] ^= state[9];
+        new[12] ^= state[12];
+        new[12] ^= state[13];
         new[13] = 0;
-        new[13] = new[13] ^ state[2];
-        new[13] = new[13] ^ state[3];
-        new[13] = new[13] ^ state[4];
-        new[13] = new[13] ^ state[5];
-        new[13] = new[13] ^ state[10];
-        new[13] = new[13] ^ state[13];
-        new[13] = new[13] ^ state[14];
+        new[13] ^= state[2];
+        new[13] ^= state[3];
+        new[13] ^= state[4];
+        new[13] ^= state[5];
+        new[13] ^= state[10];
+        new[13] ^= state[13];
+        new[13] ^= state[14];
         new[14] = 0;
-        new[14] = new[14] ^ state[3];
-        new[14] = new[14] ^ state[4];
-        new[14] = new[14] ^ state[5];
-        new[14] = new[14] ^ state[6];
-        new[14] = new[14] ^ state[11];
-        new[14] = new[14] ^ state[14];
-        new[14] = new[14] ^ state[15];
+        new[14] ^= state[3];
+        new[14] ^= state[4];
+        new[14] ^= state[5];
+        new[14] ^= state[6];
+        new[14] ^= state[11];
+        new[14] ^= state[14];
+        new[14] ^= state[15];
         new[15] = 0;
-        new[15] = new[15] ^ state[0];
-        new[15] = new[15] ^ state[1];
-        new[15] = new[15] ^ state[2];
-        new[15] = new[15] ^ state[3];
-        new[15] = new[15] ^ state[5];
-        new[15] = new[15] ^ state[7];
-        new[15] = new[15] ^ state[8];
-        new[15] = new[15] ^ state[9];
-        new[15] = new[15] ^ state[10];
-        new[15] = new[15] ^ state[11];
-        new[15] = new[15] ^ state[15];
+        new[15] ^= state[0];
+        new[15] ^= state[1];
+        new[15] ^= state[2];
+        new[15] ^= state[3];
+        new[15] ^= state[5];
+        new[15] ^= state[7];
+        new[15] ^= state[8];
+        new[15] ^= state[9];
+        new[15] ^= state[10];
+        new[15] ^= state[11];
+        new[15] ^= state[15];
         state[0] = new[0];
         state[1] = new[1];
         state[2] = new[2];
@@ -197,43 +199,75 @@ fn eaglesong_permutation(state: &mut [u32]) {
         // for j in 0..16 {
         //     state[j] = state[j] ^ state[j].rotate_left(COEFFICIENTS[3 * j + 1]) ^ state[j].rotate_left(COEFFICIENTS[ 3 * j + 2]);
         // }
-        state[0] = state[0] ^ state[0].rotate_left(COEFFICIENTS[3 * 0 + 1]) ^ state[0].rotate_left(COEFFICIENTS[ 3 * 0 + 2]);
-        state[1] = state[1] ^ state[1].rotate_left(COEFFICIENTS[3 * 1 + 1]) ^ state[1].rotate_left(COEFFICIENTS[ 3 * 1 + 2]);
-        state[2] = state[2] ^ state[2].rotate_left(COEFFICIENTS[3 * 2 + 1]) ^ state[2].rotate_left(COEFFICIENTS[ 3 * 2 + 2]);
-        state[3] = state[3] ^ state[3].rotate_left(COEFFICIENTS[3 * 3 + 1]) ^ state[3].rotate_left(COEFFICIENTS[ 3 * 3 + 2]);
-        state[4] = state[4] ^ state[4].rotate_left(COEFFICIENTS[3 * 4 + 1]) ^ state[4].rotate_left(COEFFICIENTS[ 3 * 4 + 2]);
-        state[5] = state[5] ^ state[5].rotate_left(COEFFICIENTS[3 * 5 + 1]) ^ state[5].rotate_left(COEFFICIENTS[ 3 * 5 + 2]);
-        state[6] = state[6] ^ state[6].rotate_left(COEFFICIENTS[3 * 6 + 1]) ^ state[6].rotate_left(COEFFICIENTS[ 3 * 6 + 2]);
-        state[7] = state[7] ^ state[7].rotate_left(COEFFICIENTS[3 * 7 + 1]) ^ state[7].rotate_left(COEFFICIENTS[ 3 * 7 + 2]);
-        state[8] = state[8] ^ state[8].rotate_left(COEFFICIENTS[3 * 8 + 1]) ^ state[8].rotate_left(COEFFICIENTS[ 3 * 8 + 2]);
-        state[9] = state[9] ^ state[9].rotate_left(COEFFICIENTS[3 * 9 + 1]) ^ state[9].rotate_left(COEFFICIENTS[ 3 * 9 + 2]);
-        state[10] = state[10] ^ state[10].rotate_left(COEFFICIENTS[3 * 10 + 1]) ^ state[10].rotate_left(COEFFICIENTS[ 3 * 10 + 2]);
-        state[11] = state[11] ^ state[11].rotate_left(COEFFICIENTS[3 * 11 + 1]) ^ state[11].rotate_left(COEFFICIENTS[ 3 * 11 + 2]);
-        state[12] = state[12] ^ state[12].rotate_left(COEFFICIENTS[3 * 12 + 1]) ^ state[12].rotate_left(COEFFICIENTS[ 3 * 12 + 2]);
-        state[13] = state[13] ^ state[13].rotate_left(COEFFICIENTS[3 * 13 + 1]) ^ state[13].rotate_left(COEFFICIENTS[ 3 * 13 + 2]);
-        state[14] = state[14] ^ state[14].rotate_left(COEFFICIENTS[3 * 14 + 1]) ^ state[14].rotate_left(COEFFICIENTS[ 3 * 14 + 2]);
-        state[15] = state[15] ^ state[15].rotate_left(COEFFICIENTS[3 * 15 + 1]) ^ state[15].rotate_left(COEFFICIENTS[ 3 * 15 + 2]);
+        state[0] = state[0]
+            ^ state[0].rotate_left(COEFFICIENTS[3 * 0 + 1])
+            ^ state[0].rotate_left(COEFFICIENTS[3 * 0 + 2]);
+        state[1] = state[1]
+            ^ state[1].rotate_left(COEFFICIENTS[3 * 1 + 1])
+            ^ state[1].rotate_left(COEFFICIENTS[3 * 1 + 2]);
+        state[2] = state[2]
+            ^ state[2].rotate_left(COEFFICIENTS[3 * 2 + 1])
+            ^ state[2].rotate_left(COEFFICIENTS[3 * 2 + 2]);
+        state[3] = state[3]
+            ^ state[3].rotate_left(COEFFICIENTS[3 * 3 + 1])
+            ^ state[3].rotate_left(COEFFICIENTS[3 * 3 + 2]);
+        state[4] = state[4]
+            ^ state[4].rotate_left(COEFFICIENTS[3 * 4 + 1])
+            ^ state[4].rotate_left(COEFFICIENTS[3 * 4 + 2]);
+        state[5] = state[5]
+            ^ state[5].rotate_left(COEFFICIENTS[3 * 5 + 1])
+            ^ state[5].rotate_left(COEFFICIENTS[3 * 5 + 2]);
+        state[6] = state[6]
+            ^ state[6].rotate_left(COEFFICIENTS[3 * 6 + 1])
+            ^ state[6].rotate_left(COEFFICIENTS[3 * 6 + 2]);
+        state[7] = state[7]
+            ^ state[7].rotate_left(COEFFICIENTS[3 * 7 + 1])
+            ^ state[7].rotate_left(COEFFICIENTS[3 * 7 + 2]);
+        state[8] = state[8]
+            ^ state[8].rotate_left(COEFFICIENTS[3 * 8 + 1])
+            ^ state[8].rotate_left(COEFFICIENTS[3 * 8 + 2]);
+        state[9] = state[9]
+            ^ state[9].rotate_left(COEFFICIENTS[3 * 9 + 1])
+            ^ state[9].rotate_left(COEFFICIENTS[3 * 9 + 2]);
+        state[10] = state[10]
+            ^ state[10].rotate_left(COEFFICIENTS[3 * 10 + 1])
+            ^ state[10].rotate_left(COEFFICIENTS[3 * 10 + 2]);
+        state[11] = state[11]
+            ^ state[11].rotate_left(COEFFICIENTS[3 * 11 + 1])
+            ^ state[11].rotate_left(COEFFICIENTS[3 * 11 + 2]);
+        state[12] = state[12]
+            ^ state[12].rotate_left(COEFFICIENTS[3 * 12 + 1])
+            ^ state[12].rotate_left(COEFFICIENTS[3 * 12 + 2]);
+        state[13] = state[13]
+            ^ state[13].rotate_left(COEFFICIENTS[3 * 13 + 1])
+            ^ state[13].rotate_left(COEFFICIENTS[3 * 13 + 2]);
+        state[14] = state[14]
+            ^ state[14].rotate_left(COEFFICIENTS[3 * 14 + 1])
+            ^ state[14].rotate_left(COEFFICIENTS[3 * 14 + 2]);
+        state[15] = state[15]
+            ^ state[15].rotate_left(COEFFICIENTS[3 * 15 + 1])
+            ^ state[15].rotate_left(COEFFICIENTS[3 * 15 + 2]);
 
         // constants injection
         // for j in 0..16 {
-        //     state[j] = state[j] ^ INJECTION_CONSTANTS[i * 16 + j];
+        //     state[j] ^= INJECTION_CONSTANTS[i * 16 + j];
         // }
-        state[0] = state[0] ^ INJECTION_CONSTANTS[i * 16 + 0];
-        state[1] = state[1] ^ INJECTION_CONSTANTS[i * 16 + 1];
-        state[2] = state[2] ^ INJECTION_CONSTANTS[i * 16 + 2];
-        state[3] = state[3] ^ INJECTION_CONSTANTS[i * 16 + 3];
-        state[4] = state[4] ^ INJECTION_CONSTANTS[i * 16 + 4];
-        state[5] = state[5] ^ INJECTION_CONSTANTS[i * 16 + 5];
-        state[6] = state[6] ^ INJECTION_CONSTANTS[i * 16 + 6];
-        state[7] = state[7] ^ INJECTION_CONSTANTS[i * 16 + 7];
-        state[8] = state[8] ^ INJECTION_CONSTANTS[i * 16 + 8];
-        state[9] = state[9] ^ INJECTION_CONSTANTS[i * 16 + 9];
-        state[10] = state[10] ^ INJECTION_CONSTANTS[i * 16 + 10];
-        state[11] = state[11] ^ INJECTION_CONSTANTS[i * 16 + 11];
-        state[12] = state[12] ^ INJECTION_CONSTANTS[i * 16 + 12];
-        state[13] = state[13] ^ INJECTION_CONSTANTS[i * 16 + 13];
-        state[14] = state[14] ^ INJECTION_CONSTANTS[i * 16 + 14];
-        state[15] = state[15] ^ INJECTION_CONSTANTS[i * 16 + 15];
+        state[0] ^= INJECTION_CONSTANTS[i * 16 + 0];
+        state[1] ^= INJECTION_CONSTANTS[i * 16 + 1];
+        state[2] ^= INJECTION_CONSTANTS[i * 16 + 2];
+        state[3] ^= INJECTION_CONSTANTS[i * 16 + 3];
+        state[4] ^= INJECTION_CONSTANTS[i * 16 + 4];
+        state[5] ^= INJECTION_CONSTANTS[i * 16 + 5];
+        state[6] ^= INJECTION_CONSTANTS[i * 16 + 6];
+        state[7] ^= INJECTION_CONSTANTS[i * 16 + 7];
+        state[8] ^= INJECTION_CONSTANTS[i * 16 + 8];
+        state[9] ^= INJECTION_CONSTANTS[i * 16 + 9];
+        state[10] ^= INJECTION_CONSTANTS[i * 16 + 10];
+        state[11] ^= INJECTION_CONSTANTS[i * 16 + 11];
+        state[12] ^= INJECTION_CONSTANTS[i * 16 + 12];
+        state[13] ^= INJECTION_CONSTANTS[i * 16 + 13];
+        state[14] ^= INJECTION_CONSTANTS[i * 16 + 14];
+        state[15] ^= INJECTION_CONSTANTS[i * 16 + 15];
 
         // addition / rotation / addition
         // for j in (0..16).step_by(2) {
@@ -244,36 +278,36 @@ fn eaglesong_permutation(state: &mut [u32]) {
         // }
         state[0] = state[0].wrapping_add(state[0 + 1]);
         state[0] = state[0].rotate_left(8);
-        state[0+1] = state[0+1].rotate_left(24);
-        state[0+1] = state[0].wrapping_add(state[0+1]);
+        state[0 + 1] = state[0 + 1].rotate_left(24);
+        state[0 + 1] = state[0].wrapping_add(state[0 + 1]);
         state[2] = state[2].wrapping_add(state[2 + 1]);
         state[2] = state[2].rotate_left(8);
-        state[2+1] = state[2+1].rotate_left(24);
-        state[2+1] = state[2].wrapping_add(state[2+1]);
+        state[2 + 1] = state[2 + 1].rotate_left(24);
+        state[2 + 1] = state[2].wrapping_add(state[2 + 1]);
         state[4] = state[4].wrapping_add(state[4 + 1]);
         state[4] = state[4].rotate_left(8);
-        state[4+1] = state[4+1].rotate_left(24);
-        state[4+1] = state[4].wrapping_add(state[4+1]);
+        state[4 + 1] = state[4 + 1].rotate_left(24);
+        state[4 + 1] = state[4].wrapping_add(state[4 + 1]);
         state[6] = state[6].wrapping_add(state[6 + 1]);
         state[6] = state[6].rotate_left(8);
-        state[6+1] = state[6+1].rotate_left(24);
-        state[6+1] = state[6].wrapping_add(state[6+1]);
+        state[6 + 1] = state[6 + 1].rotate_left(24);
+        state[6 + 1] = state[6].wrapping_add(state[6 + 1]);
         state[8] = state[8].wrapping_add(state[8 + 1]);
         state[8] = state[8].rotate_left(8);
-        state[8+1] = state[8+1].rotate_left(24);
-        state[8+1] = state[8].wrapping_add(state[8+1]);
+        state[8 + 1] = state[8 + 1].rotate_left(24);
+        state[8 + 1] = state[8].wrapping_add(state[8 + 1]);
         state[10] = state[10].wrapping_add(state[10 + 1]);
         state[10] = state[10].rotate_left(8);
-        state[10+1] = state[10+1].rotate_left(24);
-        state[10+1] = state[10].wrapping_add(state[10+1]);
+        state[10 + 1] = state[10 + 1].rotate_left(24);
+        state[10 + 1] = state[10].wrapping_add(state[10 + 1]);
         state[12] = state[12].wrapping_add(state[12 + 1]);
         state[12] = state[12].rotate_left(8);
-        state[12+1] = state[12+1].rotate_left(24);
-        state[12+1] = state[12].wrapping_add(state[12+1]);
+        state[12 + 1] = state[12 + 1].rotate_left(24);
+        state[12 + 1] = state[12].wrapping_add(state[12 + 1]);
         state[14] = state[14].wrapping_add(state[14 + 1]);
         state[14] = state[14].rotate_left(8);
-        state[14+1] = state[14+1].rotate_left(24);
-        state[14+1] = state[14].wrapping_add(state[14+1]);
+        state[14 + 1] = state[14 + 1].rotate_left(24);
+        state[14 + 1] = state[14].wrapping_add(state[14 + 1]);
     }
 }
 
@@ -282,14 +316,8 @@ pub fn eaglesong_sponge(
     output_length: usize,
     input: &[u8],
     input_length: usize,
-    delimiter: u8,
 ) {
     let mut state = [0 as u32; 16];
-
-    // initialize to zero
-    for i in 0..16 {
-        state[i] = 0;
-    }
 
     // absorbing
     for i in 0..(((input_length + 1) * 8 + RATE - 1) / RATE) {
@@ -297,12 +325,12 @@ pub fn eaglesong_sponge(
             let mut integer: u32 = 0;
             for k in 0..4 {
                 if i * RATE / 8 + j * 4 + k < input_length {
-                    integer = (integer << 8) ^ (input[i * RATE / 8 + j * 4 + k] as u32);
+                    integer = (integer << 8) ^ u32::from(input[i * RATE / 8 + j * 4 + k]);
                 } else if i * RATE / 8 + j * 4 + k == input_length {
-                    integer = (integer << 8) ^ (delimiter as u32);
+                    integer = (integer << 8) ^ DELIMITER;
                 }
             }
-            state[j] = state[j] ^ integer;
+            state[j] ^= integer;
         }
         eaglesong_permutation(&mut state);
     }
@@ -323,9 +351,9 @@ pub fn eaglesong_update(state: &mut [u32; 16], input: &[u8]) {
         for j in 0..(RATE / 32) {
             let mut integer: u32 = 0;
             for k in 0..4 {
-                integer = (integer << 8) ^ (input[i * RATE / 8 + j * 4 + k] as u32);
+                integer = (integer << 8) ^ u32::from(input[i * RATE / 8 + j * 4 + k]);
             }
-            state[j] = state[j] ^ integer;
+            state[j] ^= integer;
         }
         eaglesong_permutation(state);
     }
@@ -341,12 +369,12 @@ pub fn eaglesong_finalize(
         let mut integer: u32 = 0;
         for k in 0..4 {
             if j * 4 + k < input.len() {
-                integer = (integer << 8) ^ (input[j * 4 + k] as u32);
+                integer = (integer << 8) ^ u32::from(input[j * 4 + k]);
             } else if j * 4 + k == input.len() {
-                integer = (integer << 8) ^ (DELIMITER as u32);
+                integer = (integer << 8) ^ DELIMITER;
             }
         }
-        state[j] = state[j] ^ integer;
+        state[j] ^= integer;
     }
     eaglesong_permutation(state);
 

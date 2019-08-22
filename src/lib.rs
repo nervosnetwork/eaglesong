@@ -6,9 +6,10 @@ mod const_vars;
 mod eaglesong;
 
 pub fn eaglesong(input: &[u8], output: &mut [u8]) {
-    eaglesong_sponge(output, output.len(), input, input.len(), DELIMITER)
+    eaglesong_sponge(output, output.len(), input, input.len())
 }
 
+#[derive(Default)]
 pub struct EagleSongBuilder {
     state: [u32; 16],
     length: usize,
@@ -39,7 +40,7 @@ impl EagleSongBuilder {
     pub fn finalize(&mut self) -> [u8; 32] {
         let mut output = [0 as u8; 32];
         eaglesong_finalize(&mut self.state, &self.msg, &mut output, 32);
-        return output;
+        output
     }
 }
 
