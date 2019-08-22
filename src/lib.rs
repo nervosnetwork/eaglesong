@@ -1,5 +1,3 @@
-extern crate crunchy;
-
 use crate::const_vars::*;
 use crate::eaglesong::*;
 use std::vec::Vec;
