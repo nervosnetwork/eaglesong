@@ -1,11 +1,11 @@
 [package]
 name = "eaglesong"
 version = "0.1.0"
-authors = ["rink1969 <rink1969@cryptape.com>"]
+authors = ["rink1969 <rink1969@cryptape.com>", "Nervos Core Dev <dev@nervos.org>"]
 edition = "2018"
 license = "MIT"
 homepage = "https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0010-eaglesong/0010-eaglesong.md"
-repository = "https://github.com/rink1969/eaglesong"
+repository = "https://github.com/nervosnetwork/eaglesong"
 description = "A Rust Library of Eaglesong Hash Function"
 keywords = ["cipher", "cryptography"]
 
