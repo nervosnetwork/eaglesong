@@ -48,6 +48,9 @@ impl EagleSongBuilder {
 mod test {
     use crate::eaglesong;
     use crate::EagleSongBuilder;
+    use std::fs::File;
+    use std::io::{BufRead, BufReader};
+    use std::path::PathBuf;
 
     // 9e4452fc7aed93d7240b7b55263792befd1be09252b456401122ba71a56f62a0
     pub const BLANK_HASH: [u8; 32] = [
@@ -97,5 +100,24 @@ mod test {
         eaglesong_builder_2.update("11111111111111111111111111111111".as_bytes());
         eaglesong_builder_2.update("11\n".as_bytes());
         assert_eq!(eaglesong_builder_2.finalize(), HASH_34_1);
+    }
+
+    #[test]
+    fn test_vectors() {
+        let mut dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        dir.push("src/test_vectors.txt");
+        let file = File::open(dir).unwrap();
+        let reader = BufReader::new(file);
+        let mut lines = reader.lines();
+        while let Some(Ok(line)) = lines.next() {
+            if line.starts_with("Input = ") {
+                let mut eaglesong_builder = EagleSongBuilder::new();
+                eaglesong_builder.update(&hex::decode(line.split_at(8).1).unwrap());
+                assert_eq!(
+                    hex::encode(eaglesong_builder.finalize()),
+                    lines.next().unwrap().unwrap().split_at(9).1
+                );
+            }
+        }
     }
 }
