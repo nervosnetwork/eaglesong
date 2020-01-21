@@ -1,4 +1,5 @@
 use crate::const_vars::*;
+use core::cmp;
 
 #[allow(clippy::identity_op)]
 #[allow(clippy::erasing_op)]
@@ -324,10 +325,14 @@ pub fn eaglesong_sponge(
         for j in 0..(RATE / 32) {
             let mut integer: u32 = 0;
             for k in 0..4 {
-                if i * RATE / 8 + j * 4 + k < input_length {
-                    integer = (integer << 8) ^ u32::from(input[i * RATE / 8 + j * 4 + k]);
-                } else if i * RATE / 8 + j * 4 + k == input_length {
-                    integer = (integer << 8) ^ DELIMITER;
+                match (i * RATE / 8 + j * 4 + k).cmp(&input_length) {
+                    cmp::Ordering::Less => {
+                        integer = (integer << 8) ^ u32::from(input[i * RATE / 8 + j * 4 + k]);
+                    }
+                    cmp::Ordering::Equal => {
+                        integer = (integer << 8) ^ DELIMITER;
+                    }
+                    cmp::Ordering::Greater => {}
                 }
             }
             state[j] ^= integer;
@@ -368,10 +373,14 @@ pub fn eaglesong_finalize(
     for j in 0..(RATE / 32) {
         let mut integer: u32 = 0;
         for k in 0..4 {
-            if j * 4 + k < input.len() {
-                integer = (integer << 8) ^ u32::from(input[j * 4 + k]);
-            } else if j * 4 + k == input.len() {
-                integer = (integer << 8) ^ DELIMITER;
+            match (j * 4 + k).cmp(&input.len()) {
+                cmp::Ordering::Less => {
+                    integer = (integer << 8) ^ u32::from(input[j * 4 + k]);
+                }
+                cmp::Ordering::Equal => {
+                    integer = (integer << 8) ^ DELIMITER;
+                }
+                cmp::Ordering::Greater => {}
             }
         }
         state[j] ^= integer;
