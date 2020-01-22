@@ -77,12 +77,12 @@ mod test {
     #[test]
     fn simple() {
         let mut output = [0 as u8; 32];
-        let mut input = "1111111111111111111111111111111111\n".as_bytes();
-        eaglesong(&input, &mut output);
+        let mut input = b"1111111111111111111111111111111111\n";
+        eaglesong(&input[..], &mut output);
         assert_eq!(output, HASH_34_1);
 
-        input = "1111111111111111111111111111111122\n".as_bytes();
-        eaglesong(&input, &mut output);
+        input = b"1111111111111111111111111111111122\n";
+        eaglesong(&input[..], &mut output);
         assert_eq!(output, HASH_32_1_2_2);
     }
 
@@ -92,13 +92,13 @@ mod test {
         assert_eq!(eaglesong_builder.finalize(), BLANK_HASH);
 
         let mut eaglesong_builder_1 = EagleSongBuilder::new();
-        eaglesong_builder_1.update("111111111111111111111111".as_bytes());
-        eaglesong_builder_1.update("1111111111\n".as_bytes());
+        eaglesong_builder_1.update(b"111111111111111111111111");
+        eaglesong_builder_1.update(b"1111111111\n");
         assert_eq!(eaglesong_builder_1.finalize(), HASH_34_1);
 
         let mut eaglesong_builder_2 = EagleSongBuilder::new();
-        eaglesong_builder_2.update("11111111111111111111111111111111".as_bytes());
-        eaglesong_builder_2.update("11\n".as_bytes());
+        eaglesong_builder_2.update(b"11111111111111111111111111111111");
+        eaglesong_builder_2.update(b"11\n");
         assert_eq!(eaglesong_builder_2.finalize(), HASH_34_1);
     }
 
