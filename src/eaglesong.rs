@@ -1,11 +1,13 @@
+#![allow(clippy::comparison_chain)]
+// https://users.rust-lang.org/t/one-case-of-if-performance-compared-to-match/5054
+
 use crate::const_vars::*;
 use crunchy::unroll;
 
 #[allow(clippy::identity_op)]
 #[allow(clippy::erasing_op)]
-#[allow(clippy::comparison_chain)]  // https://users.rust-lang.org/t/one-case-of-if-performance-compared-to-match/5054
 fn eaglesong_permutation(state: &mut [u32]) {
-    let mut new = [0 as u32; 16];
+    let mut new = [0u32; 16];
 
     debug_assert_eq!(NUM_ROUNDS, 43);
     unroll! {
@@ -322,22 +324,13 @@ pub fn eaglesong_sponge(
     input: &[u8],
     input_length: usize,
 ) {
-    let mut state = [0 as u32; 16];
+    let mut state = [0u32; 16];
 
     // absorbing
     for i in 0..(((input_length + 1) * 8 + RATE - 1) / RATE) {
         for j in 0..(RATE / 32) {
             let mut integer: u32 = 0;
             for k in 0..4 {
-                // match (i * RATE / 8 + j * 4 + k).cmp(&input_length) {
-                //     cmp::Ordering::Less => {
-                //         integer = (integer << 8) ^ u32::from(input[i * RATE / 8 + j * 4 + k]);
-                //     }
-                //     cmp::Ordering::Equal => {
-                //         integer = (integer << 8) ^ DELIMITER;
-                //     }
-                //     cmp::Ordering::Greater => {}
-                // }
                 let l = i * RATE / 8 + j * 4 + k;
                 if l < input_length {
                     integer = (integer << 8) ^ u32::from(input[i * RATE / 8 + j * 4 + k]);
@@ -383,15 +376,6 @@ pub fn eaglesong_finalize(
     for j in 0..(RATE / 32) {
         let mut integer: u32 = 0;
         for k in 0..4 {
-            // match (j * 4 + k).cmp(&input.len()) {
-            //     cmp::Ordering::Less => {
-            //         integer = (integer << 8) ^ u32::from(input[j * 4 + k]);
-            //     }
-            //     cmp::Ordering::Equal => {
-            //         integer = (integer << 8) ^ DELIMITER;
-            //     }
-            //     cmp::Ordering::Greater => {}
-            // }
             let l = j * 4 + k;
             if l < input.len() {
                 integer = (integer << 8) ^ u32::from(input[j * 4 + k]);

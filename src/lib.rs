@@ -19,7 +19,7 @@ pub struct EagleSongBuilder {
 impl EagleSongBuilder {
     pub fn new() -> Self {
         EagleSongBuilder {
-            state: [0 as u32; 16],
+            state: [0u32; 16],
             length: 0,
             msg: Vec::new(),
         }
@@ -38,7 +38,7 @@ impl EagleSongBuilder {
     }
 
     pub fn finalize(&mut self) -> [u8; 32] {
-        let mut output = [0 as u8; 32];
+        let mut output = [0u8; 32];
         eaglesong_finalize(&mut self.state, &self.msg, &mut output, 32);
         output
     }
@@ -69,14 +69,14 @@ mod test {
     ];
     #[test]
     fn empty_eaglesong() {
-        let mut output = [0 as u8; 32];
+        let mut output = [0u8; 32];
         let input = [];
         eaglesong(&input, &mut output);
         assert_eq!(output, BLANK_HASH);
     }
     #[test]
     fn simple() {
-        let mut output = [0 as u8; 32];
+        let mut output = [0u8; 32];
         let mut input = b"1111111111111111111111111111111111\n";
         eaglesong(&input[..], &mut output);
         assert_eq!(output, HASH_34_1);
