@@ -10,10 +10,11 @@ description = "A Rust Library of Eaglesong Hash Function"
 keywords = ["cipher", "cryptography"]
 
 [dependencies]
+crunchy = "=0.2.2"
 
 [dev-dependencies]
-criterion = "0.2"
-blake2b-rs = "0.1.4"
+criterion = { version = "0.3", features = ["html_reports"] }
+blake2b-rs = "0.2.0"
 hex = "0.4"
 
 [[bench]]
