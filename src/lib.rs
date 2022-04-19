@@ -112,11 +112,14 @@ mod test {
         while let Some(Ok(line)) = lines.next() {
             if line.starts_with("Input = ") {
                 let mut eaglesong_builder = EagleSongBuilder::new();
-                eaglesong_builder.update(&hex::decode(line.split_at(8).1).unwrap());
-                assert_eq!(
-                    hex::encode(eaglesong_builder.finalize()),
-                    lines.next().unwrap().unwrap().split_at(9).1
-                );
+                let input = hex::decode(line.split_at(8).1).unwrap();
+                eaglesong_builder.update(&input);
+                let output_line = lines.next().unwrap().unwrap();
+                let expect = output_line.split_at(9).1;
+                assert_eq!(hex::encode(eaglesong_builder.finalize()), expect);
+                let mut output = [0u8; 32];
+                eaglesong(&input, &mut output);
+                assert_eq!(hex::encode(output), expect);
             }
         }
     }
