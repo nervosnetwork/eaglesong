@@ -328,17 +328,17 @@ pub fn eaglesong_sponge(
 
     // absorbing
     for i in 0..(((input_length + 1) * 8 + RATE - 1) / RATE) {
-        for j in 0..(RATE / 32) {
+        for (j, state_j) in state.iter_mut().enumerate().take(RATE / 32) {
             let mut integer: u32 = 0;
             for k in 0..4 {
                 let l = i * RATE / 8 + j * 4 + k;
                 if l < input_length {
-                    integer = (integer << 8) ^ u32::from(input[i * RATE / 8 + j * 4 + k]);
+                    integer = (integer << 8) ^ u32::from(input[l]);
                 } else if l == input_length {
                     integer = (integer << 8) ^ DELIMITER;
                 }
             }
-            state[j] ^= integer;
+            *state_j ^= integer;
         }
         eaglesong_permutation(&mut state);
     }
@@ -356,12 +356,12 @@ pub fn eaglesong_sponge(
 
 pub fn eaglesong_update(state: &mut [u32; 16], input: &[u8]) {
     for i in 0..(input.len() * 8 / RATE) {
-        for j in 0..(RATE / 32) {
+        for (j, state_j) in state.iter_mut().enumerate().take(RATE / 32) {
             let mut integer: u32 = 0;
             for k in 0..4 {
                 integer = (integer << 8) ^ u32::from(input[i * RATE / 8 + j * 4 + k]);
             }
-            state[j] ^= integer;
+            *state_j ^= integer;
         }
         eaglesong_permutation(state);
     }
@@ -373,24 +373,24 @@ pub fn eaglesong_finalize(
     output: &mut [u8],
     output_length: usize,
 ) {
-    for j in 0..(RATE / 32) {
+    for (j, state_j) in state.iter_mut().enumerate().take(RATE / 32) {
         let mut integer: u32 = 0;
         for k in 0..4 {
             let l = j * 4 + k;
             if l < input.len() {
-                integer = (integer << 8) ^ u32::from(input[j * 4 + k]);
+                integer = (integer << 8) ^ u32::from(input[l]);
             } else if l == input.len() {
                 integer = (integer << 8) ^ DELIMITER;
             }
         }
-        state[j] ^= integer;
+        *state_j ^= integer;
     }
     eaglesong_permutation(state);
 
     for i in 0..(output_length / (RATE / 8)) {
-        for j in 0..(RATE / 32) {
+        for (j, state_j) in state.iter_mut().enumerate().take(RATE / 32) {
             for k in 0..4 {
-                output[i * RATE / 8 + j * 4 + k] = ((state[j] >> (8 * k as u32)) & 0xff) as u8;
+                output[i * RATE / 8 + j * 4 + k] = ((*state_j >> (8 * k as u32)) & 0xff) as u8;
             }
         }
         eaglesong_permutation(state);

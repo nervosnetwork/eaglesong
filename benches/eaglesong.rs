@@ -11,6 +11,14 @@ fn bench(c: &mut Criterion) {
         })
     });
 
+    c.bench_function("bench_eaglesong_builder", |b| {
+        b.iter(|| {
+            let mut builder = eaglesong::EagleSongBuilder::new();
+            builder.update(&S);
+            builder.finalize();
+        })
+    });
+
     c.bench_function("bench_blake2b", |b| {
         b.iter(|| {
             let mut hash = [0u8; 32];
